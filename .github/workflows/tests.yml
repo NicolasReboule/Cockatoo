@@ -91,8 +91,4 @@ jobs:
           lcov --remove ./build/coverage.info '**/_deps/**' --output-file ./build/coverage.info
           lcov --remove ./build/coverage.info '**/tests/**' --output-file ./build/coverage.info
           lcov --list ./build/coverage.info
-          if [ "${{ github.repository_visibility }}" = "private" ]; then
           bash <(curl -s https://codecov.io/bash) -f ./build/coverage.info -t ${{ secrets.CODECOV_TOKEN }}
-          else
-          bash <(curl -s https://codecov.io/bash) -f ./build/coverage.info
-          fi
