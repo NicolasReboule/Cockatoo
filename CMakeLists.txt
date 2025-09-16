@@ -44,16 +44,46 @@ if (IS_LIBRARY)
     # Install Lib (Optional if executable only project)
     install(TARGETS ${PROJECT_NAME}_Headers ${PROJECT_NAME}_Sources
             EXPORT ${PROJECT_NAME}_Targets
-            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-            INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT archive
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT library
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT runtime
+            INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT headers
     )
+
+    install(DIRECTORY include
+            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/../ # Remove the extra include directory
+            COMPONENT headers
+    )
+
     install(EXPORT ${PROJECT_NAME}_Targets
             FILE ${PROJECT_NAME}Targets.cmake
             NAMESPACE ${PROJECT_NAME}::
-            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME} COMPONENT cmake
     )
+
+    # Setup the version file
+    include(CMakePackageConfigHelpers)
+    write_basic_package_version_file(
+            ${PROJECT_NAME}ConfigVersion.cmake
+            VERSION ${PROJECT_VERSION}
+            COMPATIBILITY AnyNewerVersion
+    )
+
+    # generate the config file that is includes the exports
+    configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
+            "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+            INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
+            NO_SET_AND_CHECK_MACRO
+            NO_CHECK_REQUIRED_COMPONENTS_MACRO
+    )
+
+    install(FILES
+            ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+            ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME} COMPONENT cmake
+    )
+
+    export(EXPORT ${PROJECT_NAME}_Targets FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake")
 else ()
     # Main executable (Optional if library only project)
     add_executable(${PROJECT_NAME} main.cpp)
