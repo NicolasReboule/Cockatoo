@@ -10,42 +10,63 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_PARALLEL_LEVEL 8)
 
+option(IS_LIBRARY "Is this project a library?" ON)
 option(BUILD_COVERAGE "Build the coverage" OFF)
 option(BUILD_TESTS "Build the tests" OFF)
 option(USE_CLANG_TIDY "Use clang-tidy" OFF) # Used by the CI
 option(USE_CLANG_TIDY_WITH_ERRORS "Use clang tidy but all warnings are errors" OFF) # Used by the CI
 option(USE_CLANG_TIDY_WITH_FIX "Use clang-tidy with fix" OFF) # Used by the CI
 
+set(CMAKE_INSTALL_INCLUDEDIR include CACHE PATH "Installation directory for header files")
+
 # Headers
-add_library(CPP_Libraries INTERFACE)
-target_include_directories(CPP_Libraries INTERFACE
+add_library(${PROJECT_NAME}_Headers INTERFACE)
+target_include_directories(${PROJECT_NAME}_Headers INTERFACE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
 # Coverage
-if(BUILD_COVERAGE)
-    target_compile_options(CPP_Libraries INTERFACE --coverage)
-    target_link_options(CPP_Libraries INTERFACE --coverage)
-endif()
+if (BUILD_COVERAGE)
+    target_compile_options(${PROJECT_NAME}_Headers INTERFACE --coverage)
+    target_link_options(${PROJECT_NAME}_Headers INTERFACE --coverage)
+endif ()
 
 # Sources
-add_library(CPP_Sources STATIC
-        src/example.cpp
+add_library(${PROJECT_NAME}_Sources STATIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/example.cpp>
 )
-target_link_libraries(CPP_Sources PUBLIC CPP_Libraries)
+target_link_libraries(${PROJECT_NAME}_Sources PUBLIC ${PROJECT_NAME}_Headers)
 
-# Main executable
-add_executable(${PROJECT_NAME} main.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE CPP_Sources)
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME}_Sources)
 
-# Compiler Warnings
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
-if (MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /W4 /WX)
+if (IS_LIBRARY)
+    # Install Lib (Optional if executable only project)
+    install(TARGETS ${PROJECT_NAME}_Headers ${PROJECT_NAME}_Sources
+            EXPORT ${PROJECT_NAME}_Targets
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+            INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    )
+    install(EXPORT ${PROJECT_NAME}_Targets
+            FILE ${PROJECT_NAME}Targets.cmake
+            NAMESPACE ${PROJECT_NAME}::
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+    )
 else ()
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
-endif()
+    # Main executable (Optional if library only project)
+    add_executable(${PROJECT_NAME} main.cpp)
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_Sources)
+
+    # Compiler Warnings
+    target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+    if (MSVC)
+        target_compile_options(${PROJECT_NAME} PRIVATE /W4 /WX)
+    else ()
+        target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
+    endif ()
+endif ()
 
 # Tests
 if (BUILD_TESTS)

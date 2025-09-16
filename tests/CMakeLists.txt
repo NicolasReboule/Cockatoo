@@ -17,7 +17,7 @@ add_executable(example_tests
 # Link headers
 target_include_directories(example_tests PRIVATE ${PROJECT_SOURCE_DIR}/include)
 # Link gtest
-target_link_libraries(example_tests PRIVATE GTest::gtest_main CPP_Sources)
+target_link_libraries(example_tests PRIVATE GTest::gtest_main ${PROJECT_NAME}_Sources)
 
 # Create tests
 include(GoogleTest)
