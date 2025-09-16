@@ -165,7 +165,7 @@ Distributed under the MIT License. See [LICENSE][license-url] for more informati
 [lint-url]: https://github.com/NicolasReboule/Cockatoo/actions/workflows/linter.yml
 [lint-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/Cockatoo/linter.yml?style=for-the-badge&label=Linting
 [docs-url]: https://github.com/NicolasReboule/Cockatoo/actions/workflows/pages/pages-build-deployment
-[docs-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/Cockatoo/pages-build-deployment?style=for-the-badge&label=Docs
+[docs-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/Cockatoo/pages/pages-build-deployment?style=for-the-badge&label=Docs
 [coverage-url]: https://app.codecov.io/github/NicolasReboule/Cockatoo
 [coverage-shield]: https://img.shields.io/codecov/c/github/NicolasReboule/Cockatoo?token=0Z3FKJ3XLE&style=for-the-badge
 
