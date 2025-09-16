@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.29)
 project(
-        CPP_Template
+        Cockatoo
         VERSION 0.0.1
         DESCRIPTION "A simple C++ project template"
-        HOMEPAGE_URL "https://github.com/NicolasReboule/CPP-Template"
+        HOMEPAGE_URL "https://github.com/NicolasReboule/Cockatoo"
         LANGUAGES CXX
 )
 set(CMAKE_CXX_STANDARD 20)
@@ -26,7 +26,7 @@ target_include_directories(CPP_Libraries INTERFACE
 # Coverage
 if(BUILD_COVERAGE)
     target_compile_options(CPP_Libraries INTERFACE --coverage)
-    target_link_options(CPP_Libraries INTERFACE --coverage)# Coverage
+    target_link_options(CPP_Libraries INTERFACE --coverage)
 endif()
 
 # Sources

@@ -42,20 +42,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/NicolasReboule/CPP-Template">
+  <a href="https://github.com/NicolasReboule/Cockatoo">
     <img src="assets/logo.ico" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">CPP-Template</h3>
+<h3 align="center">Cockatoo</h3>
 
   <p align="center">
-    CPP-Template is a C++ Template for my future projects <br />
+    Cockatoo is a C++ Template for my future projects <br />
     <br />
-    <a href="https://NicolasReboule.github.io/CPP-Template"><strong>Explore the source code docs »</strong></a>
+    <a href="https://NicolasReboule.github.io/Cockatoo"><strong>Explore the source code docs »</strong></a>
     <br />
-    <a href="https://github.com/NicolasReboule/CPP-Template/issues">Report Bug</a>
+    <a href="https://github.com/NicolasReboule/Cockatoo/issues">Report Bug</a>
     ·
-    <a href="https://github.com/NicolasReboule/CPP-Template/issues">Request Feature</a>
+    <a href="https://github.com/NicolasReboule/Cockatoo/issues">Request Feature</a>
   </p>
 </div>
 
@@ -108,7 +108,7 @@
 ## Documentation
 
 The documentation of this project can be found at:
-- Source code documentation: [https://nicolasreboule.github.io/CPP-Template][github.io-url]
+- Source code documentation: [https://nicolasreboule.github.io/Cockatoo][github.io-url]
 
 ## Usage
 
@@ -146,28 +146,28 @@ Distributed under the MIT License. See [LICENSE][license-url] for more informati
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/NicolasReboule/CPP-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/NicolasReboule/CPP-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/NicolasReboule/CPP-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/NicolasReboule/CPP-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/NicolasReboule/CPP-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/NicolasReboule/CPP-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/NicolasReboule/CPP-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/NicolasReboule/CPP-Template/issues
-[license-shield]: https://img.shields.io/github/license/NicolasReboule/CPP-Template.svg?style=for-the-badge
-[license-url]: https://github.com/NicolasReboule/CPP-Template/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/NicolasReboule/Cockatoo.svg?style=for-the-badge
+[contributors-url]: https://github.com/NicolasReboule/Cockatoo/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/NicolasReboule/Cockatoo.svg?style=for-the-badge
+[forks-url]: https://github.com/NicolasReboule/Cockatoo/network/members
+[stars-shield]: https://img.shields.io/github/stars/NicolasReboule/Cockatoo.svg?style=for-the-badge
+[stars-url]: https://github.com/NicolasReboule/Cockatoo/stargazers
+[issues-shield]: https://img.shields.io/github/issues/NicolasReboule/Cockatoo.svg?style=for-the-badge
+[issues-url]: https://github.com/NicolasReboule/Cockatoo/issues
+[license-shield]: https://img.shields.io/github/license/NicolasReboule/Cockatoo.svg?style=for-the-badge
+[license-url]: https://github.com/NicolasReboule/Cockatoo/blob/master/LICENSE
 [contributing-url]: CONTRIBUTING.md
-[github.io-url]: https://NicolasReboule.github.io/CPP-Template/
-[release-shield]: https://img.shields.io/github/v/release/NicolasReboule/CPP-Template?color=lime&label=LATEST%20RELEASE&style=for-the-badge
-[release-url]: https://github.com/NicolasReboule/CPP-Template/releases/latest
-[build-url]: https://github.com/NicolasReboule/CPP-Template/actions/workflows/build.yml
-[build-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/CPP-Template/build.yml?style=for-the-badge
-[lint-url]: https://github.com/NicolasReboule/CPP-Template/actions/workflows/linter.yml
-[lint-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/CPP-Template/linter.yml?style=for-the-badge&label=Linting
-[docs-url]: https://github.com/NicolasReboule/CPP-Template/actions/workflows/pages/pages-build-deployment
-[docs-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/CPP-Template/pages-build-deployment?branch=pages&style=for-the-badge&label=Docs
-[coverage-url]: https://app.codecov.io/github/NicolasReboule/CPP-Template
-[coverage-shield]: https://img.shields.io/codecov/c/github/NicolasReboule/CPP-Template?token=0Z3FKJ3XLE&style=for-the-badge
+[github.io-url]: https://NicolasReboule.github.io/Cockatoo/
+[release-shield]: https://img.shields.io/github/v/release/NicolasReboule/Cockatoo?color=lime&label=LATEST%20RELEASE&style=for-the-badge
+[release-url]: https://github.com/NicolasReboule/Cockatoo/releases/latest
+[build-url]: https://github.com/NicolasReboule/Cockatoo/actions/workflows/build.yml
+[build-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/Cockatoo/build.yml?style=for-the-badge
+[lint-url]: https://github.com/NicolasReboule/Cockatoo/actions/workflows/linter.yml
+[lint-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/Cockatoo/linter.yml?style=for-the-badge&label=Linting
+[docs-url]: https://github.com/NicolasReboule/Cockatoo/actions/workflows/pages/pages-build-deployment
+[docs-shield]: https://img.shields.io/github/actions/workflow/status/NicolasReboule/Cockatoo/pages-build-deployment?style=for-the-badge&label=Docs
+[coverage-url]: https://app.codecov.io/github/NicolasReboule/Cockatoo
+[coverage-shield]: https://img.shields.io/codecov/c/github/NicolasReboule/Cockatoo?token=0Z3FKJ3XLE&style=for-the-badge
 
 
 [CPP]: https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white

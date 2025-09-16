@@ -2,8 +2,8 @@
 // Created by nicol on 29/12/2024.
 //
 
-#ifndef CPP_TEMPLATE_EXAMPLE_HPP
-#define CPP_TEMPLATE_EXAMPLE_HPP
+#ifndef Cockatoo_EXAMPLE_HPP
+#define Cockatoo_EXAMPLE_HPP
 
 #include <iostream>
 
@@ -22,4 +22,4 @@ class ExampleClass {
 
 }  // namespace example
 
-#endif  // CPP_TEMPLATE_EXAMPLE_HPP
+#endif  // Cockatoo_EXAMPLE_HPP
