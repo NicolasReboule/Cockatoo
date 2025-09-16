@@ -10,12 +10,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_PARALLEL_LEVEL 8)
 
-option(IS_LIBRARY "Is this project a library?" ON)
 option(BUILD_COVERAGE "Build the coverage" OFF)
 option(BUILD_TESTS "Build the tests" OFF)
 option(USE_CLANG_TIDY "Use clang-tidy" OFF) # Used by the CI
 option(USE_CLANG_TIDY_WITH_ERRORS "Use clang tidy but all warnings are errors" OFF) # Used by the CI
 option(USE_CLANG_TIDY_WITH_FIX "Use clang-tidy with fix" OFF) # Used by the CI
+option(COCKATOO_INSTALL "Generate the install target" OFF)
 
 set(CMAKE_INSTALL_INCLUDEDIR include CACHE PATH "Installation directory for header files")
 
@@ -40,7 +40,7 @@ target_link_libraries(${PROJECT_NAME}_Sources PUBLIC ${PROJECT_NAME}_Headers)
 
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME}_Sources)
 
-if (IS_LIBRARY)
+if (COCKATOO_INSTALL)
     # Install Lib (Optional if executable only project)
     install(TARGETS ${PROJECT_NAME}_Headers ${PROJECT_NAME}_Sources
             EXPORT ${PROJECT_NAME}_Targets
@@ -84,18 +84,18 @@ if (IS_LIBRARY)
     )
 
     export(EXPORT ${PROJECT_NAME}_Targets FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake")
-else ()
-    # Main executable (Optional if library only project)
-    add_executable(${PROJECT_NAME} main.cpp)
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_Sources)
+endif ()
 
-    # Compiler Warnings
-    target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
-    if (MSVC)
-        target_compile_options(${PROJECT_NAME} PRIVATE /W4 /WX)
-    else ()
-        target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
-    endif ()
+# Main executable (Optional if library only project)
+add_executable(${PROJECT_NAME} main.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_Sources)
+
+# Compiler Warnings
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+if (MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4 /WX)
+else ()
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
 endif ()
 
 # Tests
